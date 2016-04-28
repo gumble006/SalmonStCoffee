@@ -1,27 +1,40 @@
-// $(document).ready(function(){
+"use strict";
 
-// $('a[href^="#"]').on('click', function(event) {
+// Mobile navigation
+$(document).ready(function(){
 
-//     var target = $( $(this).attr('href') );
+	$(function(){
+		$('#drop-menu').slicknav();
+	});
 
-//     if( target.length ) {
-//         event.preventDefault();
-//         $('html, body').animate({
-//             scrollTop: target.offset().top
-//         }, 1000);
-//     }
-
-// });
+});
 
 
+// Sticky 'Back to Top'
+$(document).ready(function() {
+	var stickyNavTop = $('#sticky-marker').offset().top;
+	 
+	var stickyNav = function(){
+		var scrollTop = $(window).scrollTop();
+		      
+		if (scrollTop > stickyNavTop) { 
+		    $('#backtotop').addClass('stuck');
+		} else {
+		    $('#backtotop').removeClass('stuck'); 
+		}
+	};
+	 
+	stickyNav();
+	 
+	$(window).scroll(function() {
+	    stickyNav();
+	});
 
-
-
-// };
-
-$(document).ready(function(){	
 	$('#backtotop').click(function() {
-		console.log('run.');
 		$('html, body').animate({scrollTop:0}, 'medium');
 	});
 });
+
+
+
+
